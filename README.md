@@ -12,6 +12,10 @@
 - [ ] Filter tasks (ex: only show "to do" tasks)
 - [ ] BONUS: Save tasks in LocalStorage, so that they persist even when the page is refreshed.
 
+## Link
+
+You can see the project by [clicking here](https://vvkdo98.github.io/project-planner/).
+
 ## Contributors
 
 [Quentin Macq](https://github.com/Quentinmacq)
