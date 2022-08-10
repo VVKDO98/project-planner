@@ -336,6 +336,20 @@ body {
 .nav .menu .menu__item {
   list-style-type: none;
 }
+.nav .menu .menu__item #filter {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  text-align: center;
+  border: none;
+  border-radius: 50px;
+  background-color: #2a2d33;
+  color: white;
+  padding: 10px 20px;
+}
+.nav .menu .menu__item #filter:hover {
+  background-color: #52d974;
+}
 .nav .menu .menu__item .menu__link {
   text-decoration: none;
   padding: 10px 20px 10px 20px;
