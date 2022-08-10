@@ -319,15 +319,16 @@ body {
   width: 80%;
   height: 100vh;
   margin: auto;
+  background-color: #f2f2f2;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 50px;
 }
 .nav .menu {
-  width: 20%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -335,6 +336,52 @@ body {
 .nav .menu .menu__item {
   list-style-type: none;
 }
-.nav .menu .menu__item a {
+.nav .menu .menu__item .menu__link {
   text-decoration: none;
+  padding: 10px 20px 10px 20px;
+  color: white;
+  background-color: #2a2d33;
+  border-radius: 50px;
+  margin-left: 25px;
+}
+.nav .menu .menu__item .menu__link:hover {
+  background-color: #52d974;
+}
+.nav .menu .menu__item .menu__link--add {
+  font-weight: 600;
+  background-color: #408afa;
+}
+
+.main {
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.main .main__container {
+  width: 25%;
+  height: 100%;
+  background-color: white;
+  border-radius: 25px;
+}
+.main .main__container .main__title {
+  text-align: center;
+}
+.main .main__container .main__card {
+  width: 80%;
+  margin: auto;
+  background-color: #f2f2f2;
+  border-radius: 12.5px;
+  padding: 10px;
+}
+.main .main__container .main__card .card__title {
+  font-size: 16px;
+}
+.main .main__container .main__card .card__date {
+  font-size: 12px;
+}
+.main .main__container .main__card .card__flag {
+  width: 25px;
 }/*# sourceMappingURL=style.css.map */
