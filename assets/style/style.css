@@ -372,12 +372,16 @@ body {
 .main .main__container .main__card {
   width: 80%;
   margin: auto;
+  margin-bottom: 10px;
   background-color: #f2f2f2;
   border-radius: 12.5px;
   padding: 10px;
 }
 .main .main__container .main__card .card__title {
   font-size: 16px;
+}
+.main .main__container .main__card .card__description {
+  font-size: 14px;
 }
 .main .main__container .main__card .card__date {
   font-size: 12px;

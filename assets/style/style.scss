@@ -55,11 +55,15 @@ body {
     .main__card {
       width: 80%;
       margin: auto;
+      margin-bottom: 10px;
       background-color: $white;
       border-radius: 12.5px;
       padding: 10px;
       .card__title {
         font-size: 16px;
+      }
+      .card__description {
+        font-size: 14px;
       }
       .card__date {
         font-size: 12px;
