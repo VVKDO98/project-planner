@@ -320,6 +320,7 @@ body {
   height: 100vh;
   margin: auto;
   background-color: #f2f2f2;
+  position: relative;
 }
 
 .nav {
@@ -402,4 +403,19 @@ body {
 }
 .main .main__container .main__card .card__flag {
   width: 25px;
+}
+
+#addTask {
+  width: 400px;
+  height: 200px;
+  background-color: #408afa;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 10%;
+  right: 0;
+  visibility: hidden;
 }/*# sourceMappingURL=style.css.map */

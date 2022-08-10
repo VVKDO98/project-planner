@@ -5,6 +5,7 @@ body {
   height: 100vh;
   margin: auto;
   background-color: $white;
+  position: relative;
 }
 
 .nav {
@@ -85,4 +86,19 @@ body {
       }
     }
   }
+}
+
+#addTask {
+  width: 400px;
+  height: 200px;
+  background-color: $blue;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 10%;
+  right: 0;
+  visibility: hidden;
 }

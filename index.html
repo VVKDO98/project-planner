@@ -19,7 +19,6 @@
             <option value="done">Done</option>
           </select>
         </li>
-        <li class="menu__item"><a href="#" class="menu__link">Filter</a></li>
         <li class="menu__item">
           <a href="#" class="menu__link menu__link--add" id="newtask"
             >Add a new task</a
@@ -38,6 +37,17 @@
         <h3 class="main__title">Done</h3>
       </section>
     </main>
+    <div id="addTask">
+      <input type="text" id="name" maxlength="10" placeholder="Enter a name" />
+      <input
+        type="text"
+        id="description"
+        maxlength="100"
+        placeholder="Describe your task"
+      />
+      <input type="date" id="date" value="" />
+      <input type="submit" id="addnew" value="Envoyer" />
+    </div>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
