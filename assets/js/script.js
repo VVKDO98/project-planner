@@ -1,4 +1,5 @@
 const addButton = document.querySelector("#newtask");
+
 let taskArr = [];
 
 function newtask() {
@@ -12,7 +13,6 @@ function newtask() {
   task.description = prompt("Describe your task");
   task.date = prompt("Enter a date");
   taskArr.push(addTask);
-  console.log(taskArr);
 
   let cardTask = `
         <div class="main__card">
