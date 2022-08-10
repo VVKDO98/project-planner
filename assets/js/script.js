@@ -27,3 +27,15 @@ function newtask() {
 }
 
 addButton.addEventListener("click", newtask);
+
+//Différence de temps
+let datestart = new Date();
+let dateend = new Date(prompt("Enter a date"));
+
+let datediff = (datestart, dateend) => {
+  let difftemps = dateend.getTime() - datestart.getTime();
+  let difftempsjour = Math.ceil(difftemps / (1000 * 3600 * 24));
+  return difftempsjour;
+};
+
+console.log(datediff(datestart, dateend));
