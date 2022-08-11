@@ -17,14 +17,19 @@ function newtask() {
     name: "",
     description: "",
     date: "",
+    status: "",
   };
+
   //Create object
   let task = addTask;
   task.name = document.getElementById("name").value;
   task.description = document.getElementById("description").value;
   task.date = document.getElementById("date").value;
+  task.status = document.getElementById("choice").value;
+
   //Push object
   taskArr.push(addTask);
+
   //Generate card
   let cardTask = `
             <div class="main__card">
@@ -33,24 +38,19 @@ function newtask() {
               <p class="card__date">${task.date}</p>
               <img src="assets/img/flag.png" alt="" class="card__flag" />
             </div>`;
-  // //Push card in column
-  // document
-  //   .querySelector(".main__todo")
-  //   .insertAdjacentHTML("beforeend", cardTask);
+
   //Hide modal window
   const modal = document.getElementById("addTask");
   modal.style.visibility = "hidden";
+
   //Add to local storage
   if (localStorage.getItem("addTask") == null) {
     localStorage.setItem("addTask", []);
   }
   getLocalArray.push(addTask);
   localStorage.setItem("addTask", JSON.stringify(getLocalArray));
-  // select
 
-  const option1 = document.getElementById("option1");
-  const option2 = document.getElementById("option2");
-  const option3 = document.getElementById("option3");
+  // select
   const status = document.getElementById("choice");
 
   if (status.value === "todo") {
@@ -72,6 +72,7 @@ function newtask() {
   }
 }
 
+//Load localStorage on refresh
 window.addEventListener("load", (e) => {
   const add = getLocalArray.map((x) => {
     let cardTask = `
