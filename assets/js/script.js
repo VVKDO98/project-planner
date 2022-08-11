@@ -91,9 +91,8 @@ window.addEventListener("load", (e) => {
 
 formButton.addEventListener("click", newtask);
 
-const filter = document.getElementById("filter");
-
 //Filtering column
+const filter = document.getElementById("filter");
 function filterfu() {
   const filter = document.getElementById("filter");
   const colTodo = document.getElementById("colTodo");
