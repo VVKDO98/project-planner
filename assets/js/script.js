@@ -33,10 +33,10 @@ function newtask() {
               <p class="card__date">${task.date}</p>
               <img src="assets/img/flag.png" alt="" class="card__flag" />
             </div>`;
-  //Push card in column
-  document
-    .querySelector(".main__todo")
-    .insertAdjacentHTML("beforeend", cardTask);
+  // //Push card in column
+  // document
+  //   .querySelector(".main__todo")
+  //   .insertAdjacentHTML("beforeend", cardTask);
   //Hide modal window
   const modal = document.getElementById("addTask");
   modal.style.visibility = "hidden";
@@ -46,6 +46,33 @@ function newtask() {
   }
   getLocalArray.push(addTask);
   localStorage.setItem("addTask", JSON.stringify(getLocalArray));
+  // select 
+
+  
+  const option1=document.getElementById("option1");
+  const option2=document.getElementById("option2");
+  const option3=document.getElementById("option3");
+  const status=document.getElementById("choice");
+  
+  if(status.value === "todo"){
+    document
+    .querySelector(".main__todo")
+    .insertAdjacentHTML("beforeend", cardTask);
+    
+    
+};
+
+  if(status.value === "doing"){
+    document
+    .querySelector(".main__doing")
+    .insertAdjacentHTML("beforeend", cardTask);
+  }
+  
+  if(status.value === "done"){
+    document
+    .querySelector(".main__done")
+    .insertAdjacentHTML("beforeend", cardTask);
+  }
 }
 
 window.addEventListener("load", (e) => {
@@ -65,3 +92,6 @@ window.addEventListener("load", (e) => {
 });
 
 formButton.addEventListener("click", newtask);
+
+
+
