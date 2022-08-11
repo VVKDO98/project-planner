@@ -378,6 +378,7 @@ body {
 .main .main__container {
   width: 25%;
   height: 100%;
+  margin: auto;
   background-color: white;
   border-radius: 25px;
 }

@@ -13,10 +13,10 @@
       <ul class="menu">
         <li class="menu__item">
           <select name="filter" id="filter">
-            <option value="all">Filter</option>
-            <option value="todo">To do</option>
-            <option value="doing">Doing</option>
-            <option value="done">Done</option>
+            <option id="filterAll" value="all">Filter</option>
+            <option id="filterTodo" value="todo">To do</option>
+            <option id="filterDoing" value="doing">Doing</option>
+            <option id="filterDone" value="done">Done</option>
           </select>
         </li>
         <li class="menu__item">
@@ -27,13 +27,13 @@
       </ul>
     </nav>
     <main class="main">
-      <section class="main__container main__todo">
+      <section class="main__container main__todo" id="colTodo">
         <h3 class="main__title">To do</h3>
       </section>
-      <section class="main__container main__doing">
+      <section class="main__container main__doing" id="colDoing">
         <h3 class="main__title">Doing</h3>
       </section>
-      <section class="main__container main__done">
+      <section class="main__container main__done" id="colDone">
         <h3 class="main__title">Done</h3>
       </section>
     </main>

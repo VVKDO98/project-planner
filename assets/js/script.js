@@ -46,32 +46,29 @@ function newtask() {
   }
   getLocalArray.push(addTask);
   localStorage.setItem("addTask", JSON.stringify(getLocalArray));
-  // select 
+  // select
 
-  
-  const option1=document.getElementById("option1");
-  const option2=document.getElementById("option2");
-  const option3=document.getElementById("option3");
-  const status=document.getElementById("choice");
-  
-  if(status.value === "todo"){
-    document
-    .querySelector(".main__todo")
-    .insertAdjacentHTML("beforeend", cardTask);
-    
-    
-};
+  const option1 = document.getElementById("option1");
+  const option2 = document.getElementById("option2");
+  const option3 = document.getElementById("option3");
+  const status = document.getElementById("choice");
 
-  if(status.value === "doing"){
+  if (status.value === "todo") {
     document
-    .querySelector(".main__doing")
-    .insertAdjacentHTML("beforeend", cardTask);
+      .querySelector(".main__todo")
+      .insertAdjacentHTML("beforeend", cardTask);
   }
-  
-  if(status.value === "done"){
+
+  if (status.value === "doing") {
     document
-    .querySelector(".main__done")
-    .insertAdjacentHTML("beforeend", cardTask);
+      .querySelector(".main__doing")
+      .insertAdjacentHTML("beforeend", cardTask);
+  }
+
+  if (status.value === "done") {
+    document
+      .querySelector(".main__done")
+      .insertAdjacentHTML("beforeend", cardTask);
   }
 }
 
@@ -93,5 +90,34 @@ window.addEventListener("load", (e) => {
 
 formButton.addEventListener("click", newtask);
 
+const filter = document.getElementById("filter");
 
+//Filtering column
+function filterfu() {
+  const filter = document.getElementById("filter");
+  const colTodo = document.getElementById("colTodo");
+  const colDoing = document.getElementById("colDoing");
+  const colDone = document.getElementById("colDone");
+  if (filter.value === "all") {
+    colTodo.style.display = "block";
+    colDoing.style.display = "block";
+    colDone.style.display = "block";
+  }
+  if (filter.value === "todo") {
+    colTodo.style.display = "block";
+    colDoing.style.display = "none";
+    colDone.style.display = "none";
+  }
+  if (filter.value === "doing") {
+    colTodo.style.display = "none";
+    colDoing.style.display = "block";
+    colDone.style.display = "none";
+  }
+  if (filter.value === "done") {
+    colTodo.style.display = "none";
+    colDoing.style.display = "none";
+    colDone.style.display = "block";
+  }
+}
 
+filter.addEventListener("change", filterfu);
