@@ -60,9 +60,9 @@ function createElements(elemArr) {
   const localFilterOnTodo = elemArr.filter((elem) => elem.status === "todo");
   const localFilterOnDone = elemArr.filter((elem) => elem.status === "done");
   const localFilterOnDoing = elemArr.filter((elem) => elem.status === "doing");
-  const wrapperTodo = document.querySelector(".main__todo");
-  const wrapperDone = document.querySelector(".main__done");
-  const wrapperDoing = document.querySelector(".main__doing");
+  const wrapperTodo = document.querySelector("#colTodo");
+  const wrapperDone = document.querySelector("#colDone");
+  const wrapperDoing = document.querySelector("#colDoing");
   wrapperTodo.innerHTML = "";
   wrapperDone.innerHTML = "";
   wrapperDoing.innerHTML = "";
