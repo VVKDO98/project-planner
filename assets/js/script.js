@@ -72,20 +72,40 @@ function newtask() {
   }
 }
 
-//Load localStorage on refresh
-window.addEventListener("load", (e) => {
-  const add = getLocalArray.map((x) => {
-    let cardTask = `
+let cardTask = (obj) => {
+  return `
     <div class="main__card">
-      <h2 class="card__title">${x.name}</h2>
-      <p class="card__description">${x.description}</p>
-      <p class="card__date">${x.date}</p>
+      <h2 class="card__title">${obj.name}</h2>
+      <p class="card__description">${obj.description}</p>
+      <p class="card__date">${obj.date}</p>
       <img src="assets/img/flag.png" alt="" class="card__flag" />
     </div>`;
-    //Push card in column
+};
+//Load localStorage on refresh
+window.addEventListener("load", (e) => {
+  const localFilterOnTodo = getLocalArray.filter(
+    (elem) => elem.status === "todo"
+  );
+  localFilterOnTodo.map((e) => {
     document
       .querySelector(".main__todo")
-      .insertAdjacentHTML("beforeend", cardTask);
+      .insertAdjacentHTML("beforeend", cardTask(e));
+  });
+  const localFilterOnDoing = getLocalArray.filter(
+    (elem) => elem.status === "doing"
+  );
+  localFilterOnDoing.map((e) => {
+    document
+      .querySelector(".main__doing")
+      .insertAdjacentHTML("beforeend", cardTask(e));
+  });
+  const localFilterOnDone = getLocalArray.filter(
+    (elem) => elem.status === "done"
+  );
+  localFilterOnDone.map((e) => {
+    document
+      .querySelector(".main__done")
+      .insertAdjacentHTML("beforeend", cardTask(e));
   });
 });
 
