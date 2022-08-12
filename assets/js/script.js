@@ -1,6 +1,10 @@
 const addButton = document.querySelector("#newtask");
 const formButton = document.getElementById("addnew");
 
+const colTodo = document.getElementById("colTodo");
+const colDoing = document.getElementById("colDoing");
+const colDone = document.getElementById("colDone");
+
 let taskArr = [];
 const getLocalArray = JSON.parse(localStorage.getItem("addTask") || "[]");
 
@@ -9,115 +13,79 @@ function openModal() {
   modal.style.visibility = "visible";
 }
 
+const dateDiff = (dateDue) => {
+  const difftemps = new Date(dateDue).getTime() - new Date().getTime();
+  const difftempsjour = Math.ceil(difftemps / (1000 * 3600 * 24));
+  return difftempsjour + " jours restants";
+};
+formButton.addEventListener("click", newtask);
 addButton.addEventListener("click", openModal);
 
 function newtask() {
+  console.log(document.getElementById("date").value);
+  const name = document.getElementById("name").value;
   //Object
-  let addTask = {
-    name: "",
-    description: "",
-    date: "",
-    status: "",
+  let newTask = {
+    id: Date.now(),
+    name: document.getElementById("name").value,
+    description: document.getElementById("description").value,
+    dateDue: document.getElementById("date").value,
+    status: document.getElementById("status").value,
   };
-
-  //Create object
-  let task = addTask;
-  task.name = document.getElementById("name").value;
-  task.description = document.getElementById("description").value;
-  task.date = document.getElementById("date").value;
-  task.status = document.getElementById("choice").value;
-
-  //Push object
-  taskArr.push(addTask);
-
-  //Generate card
-  let cardTask = `
-            <div class="main__card">
-              <h2 class="card__title">${task.name}</h2>
-              <p class="card__description">${task.description}</p>
-              <p class="card__date">${task.date}</p>
-              <img src="assets/img/flag.png" alt="" class="card__flag" />
-            </div>`;
+  console.log(dateDiff(newTask.dateDue));
+  taskArr.push(newTask);
+  console.log(taskArr);
+  createElements(taskArr);
 
   //Hide modal window
   const modal = document.getElementById("addTask");
   modal.style.visibility = "hidden";
 
-  //Add to local storage
-  if (localStorage.getItem("addTask") == null) {
-    localStorage.setItem("addTask", []);
-  }
-  getLocalArray.push(addTask);
-  localStorage.setItem("addTask", JSON.stringify(getLocalArray));
-
-  // select
-  const status = document.getElementById("choice");
-
-  if (status.value === "todo") {
-    document
-      .querySelector(".main__todo")
-      .insertAdjacentHTML("beforeend", cardTask);
-  }
-
-  if (status.value === "doing") {
-    document
-      .querySelector(".main__doing")
-      .insertAdjacentHTML("beforeend", cardTask);
-  }
-
-  if (status.value === "done") {
-    document
-      .querySelector(".main__done")
-      .insertAdjacentHTML("beforeend", cardTask);
-  }
+  localStorage.setItem("addTask", JSON.stringify(taskArr));
 }
 
-let cardTask = (obj) => {
-  return `
-    <div class="main__card">
-      <h2 class="card__title">${obj.name}</h2>
-      <p class="card__description">${obj.description}</p>
-      <p class="card__date">${obj.date}</p>
-      <img src="assets/img/flag.png" alt="" class="card__flag" />
-    </div>`;
-};
+function createElements(elemArr) {
+  let cardTask = (obj) => {
+    console.log(obj);
+    return `
+      <div class="main__card">
+        <h2 class="card__title">${obj.name}</h2>
+        <p class="card__description">${obj.description}</p>
+        <p class="card__date">${dateDiff(obj.dateDue)}</p>
+        <img src="assets/img/flag.png" alt="" class="card__flag" />
+        <button id="close__button">Delete</button>
+      </div>`;
+  };
+
+  const localFilterOnTodo = elemArr.filter((elem) => elem.status === "todo");
+  const localFilterOnDone = elemArr.filter((elem) => elem.status === "done");
+  const localFilterOnDoing = elemArr.filter((elem) => elem.status === "doing");
+  const wrapperTodo = document.querySelector(".main__todo");
+  const wrapperDone = document.querySelector(".main__done");
+  const wrapperDoing = document.querySelector(".main__doing");
+  wrapperTodo.innerHTML = "";
+  wrapperDone.innerHTML = "";
+  wrapperDoing.innerHTML = "";
+  localFilterOnTodo.forEach((e) => {
+    wrapperTodo.insertAdjacentHTML("beforeend", cardTask(e));
+  });
+  localFilterOnDoing.forEach((e) => {
+    wrapperDoing.insertAdjacentHTML("beforeend", cardTask(e));
+  });
+  localFilterOnDone.forEach((e) => {
+    wrapperDone.insertAdjacentHTML("beforeend", cardTask(e));
+  });
+}
 //Load localStorage on refresh
 window.addEventListener("load", (e) => {
-  const localFilterOnTodo = getLocalArray.filter(
-    (elem) => elem.status === "todo"
-  );
-  localFilterOnTodo.map((e) => {
-    document
-      .querySelector(".main__todo")
-      .insertAdjacentHTML("beforeend", cardTask(e));
-  });
-  const localFilterOnDoing = getLocalArray.filter(
-    (elem) => elem.status === "doing"
-  );
-  localFilterOnDoing.map((e) => {
-    document
-      .querySelector(".main__doing")
-      .insertAdjacentHTML("beforeend", cardTask(e));
-  });
-  const localFilterOnDone = getLocalArray.filter(
-    (elem) => elem.status === "done"
-  );
-  localFilterOnDone.map((e) => {
-    document
-      .querySelector(".main__done")
-      .insertAdjacentHTML("beforeend", cardTask(e));
-  });
+  taskArr = getLocalArray;
+  createElements(taskArr);
 });
-
-formButton.addEventListener("click", newtask);
 
 //Filtering column
 const filter = document.getElementById("filter");
 function filterfu() {
   const filter = document.getElementById("filter");
-  const colTodo = document.getElementById("colTodo");
-  const colDoing = document.getElementById("colDoing");
-  const colDone = document.getElementById("colDone");
   if (filter.value === "all") {
     colTodo.style.display = "block";
     colDoing.style.display = "block";
