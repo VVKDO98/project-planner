@@ -1,9 +1,9 @@
 const addButton = document.querySelector("#newtask");
 const formButton = document.getElementById("addnew");
 
-const colTodo = document.getElementById("colTodo");
-const colDoing = document.getElementById("colDoing");
-const colDone = document.getElementById("colDone");
+const colTodo = document.getElementById("main__todo");
+const colDoing = document.getElementById("main__doing");
+const colDone = document.getElementById("main__done");
 
 let taskArr = [];
 const getLocalArray = JSON.parse(localStorage.getItem("addTask") || "[]");
